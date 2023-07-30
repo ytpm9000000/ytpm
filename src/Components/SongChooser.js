@@ -11,11 +11,10 @@ const SongChooser = () => {
         const ably = new Ably.Realtime('NnUQBw.0sZMLw:cvvm_qE4voRWPBrO4NTy1HHQkanRJYCnffueJaOo-yU');
         const channel = ably.channels.get('playlist_channel');
 
+        console.log("kako", {channel})
+
         // Send the video URL as a message to Ably
         channel.publish('message', videoUrl);
-
-        // Close the Ably connection after sending the message
-        ably.close();
     };
 
     return (
