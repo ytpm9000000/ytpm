@@ -1,14 +1,10 @@
-import logo from './logo.svg';
 import './App.css';
-import OAuth from "./Components/OAuth";
 import {MainPage} from "./Components/MainPage";
-import {useEffect} from "react";
-import { gapi } from 'gapi-script'
-import Pusher from 'pusher-js';
-import YourComponent from "./Components/Socket";
-import Ably from 'ably'
-import Playlist from "./Components/Playlist";
 import SongChooser from "./Components/SongChooser";
+import {useState} from "react";
+import {BrowserRouter, Route, Routes} from "react-router-dom";
+import Login from "./Components/Login";
+import {NativeBaseProvider} from "native-base";
 
 function App() {
 
@@ -31,15 +27,28 @@ function App() {
     //     };
     // }, []);
 
-  return (
-    <div className="App">
-        {/*<YourComponent />*/}
-        {/*<Playlist/>*/}
-        <SongChooser/>
-        <MainPage />
-      <OAuth />
-    </div>
-  );
+    const [name, setName] = useState('');
+
+    return (
+        <NativeBaseProvider>
+            <BrowserRouter>
+                <Routes>
+                    <Route path={"/"}>
+                        <Route index element={<Login />} />
+                        <Route path="playlist" element={<MainPage />} />
+                        <Route path="songChooser" element={<SongChooser />} />
+                    </Route>
+                </Routes>
+            </BrowserRouter>
+        </NativeBaseProvider>
+        // <div className="App">
+        //     {/*<YourComponent />*/}
+        //     {/*<Playlist/>*/}
+        //     <SongChooser/>
+        //     {name === 'JBL' ? <MainPage/> : null}
+        //
+        // </div>
+    );
 }
 
 export default App;

@@ -1,4 +1,4 @@
-import logo from "../logo.png";
+import logo from "../vinil.png";
 import {useEffect, useState} from "react";
 import Ably from "ably";
 import YouTube from "react-youtube";
@@ -9,6 +9,7 @@ export const MainPage = () => {
     const [subscriptionQueue, setSubscriptionQueue] = useState([])
     const [queue, setQueue] = useState(['BTYRiNtLLQk']);
     const [currentVideo, setCurrentVideo] = useState(0);
+    const [isAdmin, setIsAdmin] = useState(false);
 
     useEffect(() => {
         const ably = new Ably.Realtime('NnUQBw.0sZMLw:cvvm_qE4voRWPBrO4NTy1HHQkanRJYCnffueJaOo-yU');
@@ -50,7 +51,8 @@ export const MainPage = () => {
         },
     };
 
-    return (<header className="App-header">
+    return (
+     <header className="App-header">
         <div onClick={handleButtonClick}>
 
             <YouTube videoId={queue[currentVideo]}  onEnd={() => {
