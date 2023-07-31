@@ -34,9 +34,9 @@ function App() {
             <BrowserRouter>
                 <Routes>
                     <Route path={"/"}>
-                        <Route index element={<Login />} />
-                        <Route path="playlist" element={<MainPage />} />
-                        <Route path="songChooser" element={<SongChooser />} />
+                        <Route index path={'ytpm'} element={<Login />} />
+                        <Route path="ytpm/playlist" element={<MainPage />} />
+                        <Route path="ytpm/songChooser" element={<SongChooser />} />
                     </Route>
                 </Routes>
             </BrowserRouter>
