@@ -28,6 +28,18 @@
   color: #61dafb;
 }
 
+.thumbnail {
+  border-radius: 12px;
+  width: 320px;
+  height: 180px;
+  cursor: pointer;
+  border: 3px solid transparent;
+}
+
+.thumbnail:hover {
+  border: 3px solid rgb(8, 145, 178);
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);

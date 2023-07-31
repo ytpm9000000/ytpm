@@ -1,7 +1,9 @@
 import React, { useEffect } from 'react';
 import Ably from 'ably/promises';
+import {useLocation} from "react-router-dom";
 
 const Playlist = () => {
+    const { state } = useLocation();
     useEffect(() => {
         const ably = new Ably.Realtime('NnUQBw.0sZMLw:cvvm_qE4voRWPBrO4NTy1HHQkanRJYCnffueJaOo-yU');
         const channel = ably.channels.get('playlist_channel');

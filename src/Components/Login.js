@@ -1,10 +1,10 @@
 import React, {useEffect, useRef, useState} from 'react';
 import {Box, Button, Input, Text} from "native-base";
 import {Link, useNavigate} from "react-router-dom";
+import '../App.css';
 
 const Login = () => {
 
-    const [nickname, setNickname] = useState('');
     const navigate = useNavigate();
     const ref = useRef(null);
 
@@ -13,7 +13,18 @@ const Login = () => {
             <Text fontSize={'14px'} mb={'8px'}>Nickname</Text>
             <Input ref={ref} bgColor={'white'} mb={'16px'} fontSize={'16px'}/>
             <Button  onPress={() => {
-                navigate('playlist')
+                const nickname = ref.current?.value || `User_${Math.floor(Math.random() * 100)}`
+                if (nickname === 'JBL')
+                {
+                    navigate('playlist')
+                } else {
+                    navigate('songChooser', {
+                        state: {
+                            nickname
+                        }
+                    })
+                }
+
             }
 
             }>Next</Button>
